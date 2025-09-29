@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Registration System</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🎓 Student Registration System</h1>
+  </header>
+
+  <main>
+    <!-- Controls -->
+    <section class="controls">
+      <input id="search" placeholder="🔍 Search by name..." />
+      <select id="filter-course"></select>
+      <select id="sort">
+        <option value="name">Sort by Name</option>
+        <option value="age">Sort by Age</option>
+        <option value="admissionDate">Sort by Admission Date</option>
+      </select>
+      <select id="order">
+        <option value="asc">⬆ Asc</option>
+        <option value="desc">⬇ Desc</option>
+      </select>
+      <button id="btn-add" class="primary">➕ Add Student</button>
+      <button id="btn-export" class="secondary">⬇ Export CSV</button>
+      <label class="file-upload">
+        📤 Import CSV
+        <input type="file" id="import-file" accept=".csv" hidden />
+      </label>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="card">Total Students <span id="stat-total">0</span></div>
+      <div class="card">Average Age <span id="stat-avg">-</span></div>
+      <div class="card">Active Students <span id="stat-active">0</span></div>
+    </section>
+
+    <!-- Table -->
+    <section class="table-section">
+      <table id="students-table">
+        <thead>
+          <tr>
+            <th>Roll #</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Course</th>
+            <th>Admission Date</th>
+            <th>Status</th>
+            <th>⚙ Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="pager" class="pager"></div>
+    </section>
+
+    <!-- Chart -->
+    <section class="chart">
+      <canvas id="courseChart" width="400" height="300"></canvas>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-title"></h2>
+      <form id="modal-form">
+        <input type="hidden" name="id" />
+        <label>Roll Number <input name="rollNumber" required /></label>
+        <label>Name <input name="name" required /></label>
+        <label>Email <input type="email" name="email" required /></label>
+        <label>Phone <input name="phone" /></label>
+        <label>Age <input type="number" name="age" min="1" /></label>
+        <label>Course <input name="course" required /></label>
+        <label>Admission Date <input type="date" name="admissionDate" /></label>
+        <label>Gender 
+          <select name="gender">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Status 
+          <select name="status">
+            <option>Active</option>
+            <option>Inactive</option>
+          </select>
+        </label>
+        <label>Address <textarea name="address"></textarea></label>
+        <label>Avatar URL <input name="avatarUrl" placeholder="https://..." /></label>
+
+        <p id="modal-message"></p>
+        <div class="modal-actions">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" id="btn-cancel" class="secondary">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toasts -->
+  <div id="toasts"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

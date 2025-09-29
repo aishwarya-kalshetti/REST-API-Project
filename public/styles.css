@@ -1,0 +1,176 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #fff;
+  --primary: #0077ff;
+  --secondary: #555;
+  --danger: #e74c3c;
+  --muted: #777;
+  --radius: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: #333;
+}
+
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+main {
+  padding: 1rem 2rem;
+}
+
+h1 { margin: 0; }
+
+.controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.controls input, .controls select, .controls button, .file-upload {
+  padding: 0.5rem 0.7rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.controls button.primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.controls button.secondary, .file-upload {
+  background: #eee;
+  cursor: pointer;
+}
+.file-upload { display: inline-block; }
+.file-upload:hover, .controls button:hover { opacity: 0.9; }
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.stats .card {
+  flex: 1;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-weight: bold;
+  text-align: center;
+}
+.stats span { display: block; font-size: 22px; margin-top: 0.5rem; }
+
+.table-section {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 0.7rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+th { background: #fafafa; }
+td.actions { display: flex; gap: 0.5rem; }
+td.actions .btn {
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius);
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+}
+td.actions .btn:hover { opacity: 0.85; }
+td.actions .btn:nth-child(1) { background: var(--primary); color: #fff; }
+td.actions .btn:nth-child(2) { background: var(--danger); color: #fff; }
+
+.pager {
+  margin-top: 1rem;
+  text-align: center;
+}
+.pager button {
+  margin: 0 3px;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.pager button:disabled {
+  background: #ddd;
+  cursor: not-allowed;
+}
+
+.chart {
+  margin-top: 2rem;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+.modal.hidden { display: none; }
+.modal-content {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.modal-content form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 14px;
+}
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.modal-actions .primary { background: var(--primary); color: #fff; border: none; cursor: pointer; }
+.modal-actions .secondary { background: #eee; cursor: pointer; }
+
+
+#toasts {
+  position: fixed;
+  bottom: 1rem; right: 1rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  z-index: 2000;
+}
+.toast {
+  background: var(--primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  opacity: 1;
+  transition: opacity 0.4s;
+}
